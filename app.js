@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost:27017/aditya", { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose
+    .connect("mongodb://localhost:27017/aditya", {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    })
     .then(() => console.log("Connection successful........."))
     .catch((err) => console.log(err));
 
@@ -9,7 +13,7 @@ mongoose.connect("mongodb://localhost:27017/aditya", { useNewUrlParser: true, us
 const playlistSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
     },
     ctype: String,
     videos: Number,
@@ -19,8 +23,18 @@ const playlistSchema = new mongoose.Schema({
     date: {
         type: Date,
         default: Date.now,
-    }
+    },
 });
 
-// Model
+// collection and creation
 const Playlist = mongoose.model("Playlist", playlistSchema);
+
+const reactPlaylist = new Playlist({
+    name: "Reactjs",
+    ctype: "frontend",
+    videos: 80,
+    author: "Aditya",
+    active: true,
+});
+
+reactPlaylist.save();

@@ -76,7 +76,33 @@ const mongoose = require("mongoose");
             active: true,
         });
 
-        await reactPlaylist.save();
+        const expressPlaylist = new Playlist({
+            name: "Expressjs",
+            ctype: "Backend",
+            videos: 80,
+            author: "Aditya",
+            active: true,
+        });
+
+        const MongoDb = new Playlist({
+            name: "MongoDb",
+            ctype: "Database",
+            videos: 90,
+            author: "Aditya",
+            active: true,
+        });
+
+        const Nodejs = new Playlist({
+            name: "Nodejs",
+            ctype: "Backend",
+            videos: 180,
+            author: "Aditya",
+            active: true,
+        });
+
+        const result =await Playlist.insertMany([reactPlaylist,expressPlaylist,MongoDb,Nodejs]);
+
+        //await reactPlaylist.save();
         console.log("Playlist saved successfully!");
     } catch (err) {
         console.error("Error occurred:", err);

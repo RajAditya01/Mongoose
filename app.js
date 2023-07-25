@@ -185,6 +185,8 @@ const mongoose = require("mongoose");
         // Call the getDocument() function inside the IIFE to ensure it executes after document insertion
         const getDocument = async () => {
             const result = await Playlist.find();
+
+            
             console.log(result);
         };
         getDocument();
